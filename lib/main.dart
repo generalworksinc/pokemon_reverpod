@@ -20,7 +20,10 @@ Future<void> main() async {
   runApp(ProviderScope(
     overrides: [
       sharedPreferencesProvider.overrideWithValue(sharedPreference),
-      themeModeProvider.overrideWithValue(StateController(defaultThemeMode))
+      // themeModeProvider.overrideWithValue(StateController(defaultThemeMode))
+      themeModeProvider.overrideWith((ref) {
+        return defaultThemeMode;
+      }),
     ],
     child: const MyApp(),
   ));
