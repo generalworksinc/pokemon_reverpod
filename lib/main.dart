@@ -14,7 +14,8 @@ Future<void> main() async {
   SharedPreferences sharedPreference = await SharedPreferences.getInstance();
 
   //初期データ取得
-  ThemeMode defaultThemeMode = themeModeFromString(sharedPreference.getString(SHARED_PREFERENCE_KEY_THEME_MODE));
+  ThemeMode defaultThemeMode = themeModeFromString(
+      sharedPreference.getString(SHARED_PREFERENCE_KEY_THEME_MODE));
 
   runApp(ProviderScope(
     overrides: [
@@ -36,13 +37,13 @@ class MyApp extends ConsumerWidget {
       title: 'Pokemon Flutter',
       // theme: ThemeData(
       //   primarySwatch: Colors.blue,
-      // ),
+      // ),ß
       theme: ThemeData.light(),
       darkTheme: ThemeData.dark(),
       themeMode: themeMode,
-      routeInformationParser: router.routeInformationParser,
-      routerDelegate: router.routerDelegate,
-      // home: const MyHomePage(title: 'Flutter Demo Home Page'),
+      // routeInformationParser: router.routeInformationParser,
+      // routerDelegate: router.routerDelegate,
+      routerConfig: router,
     );
   }
 }

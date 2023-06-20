@@ -22,14 +22,15 @@ class PokeItem extends ConsumerWidget {
     if (poke == null) {
       pokeMapNotifier.add(id);
       return ListTile(
-          leading: const CircularProgressIndicator(),
+        leading: const CircularProgressIndicator(),
       );
     } else {
       return ListTile(
-          leading: Container(
-            width: 80,
-            decoration: BoxDecoration(
-                color: (COLORS_POKE_TYPE[poke.types.first] ?? Colors.grey[100])?.withOpacity(.3),
+        leading: Container(
+          width: 80,
+          decoration: BoxDecoration(
+            color: (COLORS_POKE_TYPE[poke.types.first] ?? Colors.grey[100])
+                ?.withOpacity(.3),
             borderRadius: BorderRadius.circular(10),
             image: DecorationImage(
               fit: BoxFit.fitWidth,
@@ -40,11 +41,16 @@ class PokeItem extends ConsumerWidget {
           ),
         ),
         title: Text(poke.name),
-        subtitle: Row(children: poke.types.map<Padding>((type) => Padding(padding: const EdgeInsets.fromLTRB(0, 0, 5, 0), child: Text(type))).toList()),
+        subtitle: Row(
+            children: poke.types
+                .map<Padding>((type) => Padding(
+                    padding: const EdgeInsets.fromLTRB(0, 0, 5, 0),
+                    child: Text(type)))
+                .toList()),
         // trailing: Icon(Icons.keyboard_arrow_right),
         trailing: Icon(Icons.navigate_next),
         onTap: () {
-          context.pushNamed('detail', params: {'id': id.toString()});
+          context.pushNamed('detail', pathParameters: {'id': id.toString()});
         },
       );
     }

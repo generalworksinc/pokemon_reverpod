@@ -3,8 +3,7 @@ import './views/top_page.dart';
 import './views/detail_page.dart';
 import './views/settings_page.dart';
 
-final router = GoRouter(
-routes: [
+final router = GoRouter(routes: [
   GoRoute(
     name: 'top',
     path: '/',
@@ -18,8 +17,6 @@ routes: [
   GoRoute(
     name: 'detail',
     path: '/detail/:id',
-    builder: (context, state) => DetailPage(id: state.params['id']),
+    builder: (context, state) => DetailPage(id: state.pathParameters['id']),
   ),
-],
-  initialLocation: '/'
-);
+], initialLocation: '/');
